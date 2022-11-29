@@ -4,19 +4,21 @@ object ShoppingCart extends App {
     if (shoppingCart.isEmpty) {
       "Cart is empty."
     } else {
-
-      var totalCostMessage = ""
+      val itemsPrices = Map("Apple" -> 0.60, "Orange" -> 0.25)
+      var totalCostOfItems = 0.0
 
       for(item <- shoppingCart) {
         item match {
-          case "Apple" => totalCostMessage = "0.60p"
-          case "Orange" => totalCostMessage = "0.25p"
+          case item if itemsPrices.contains(item) => totalCostOfItems += itemsPrices(item)
         }
       }
 
-      totalCostMessage
+      formatPrice(totalCostOfItems)
     }
 
+  }
+  def formatPrice(totalCostOfItems: Double): String = {
+    if (totalCostOfItems < 1) f"$totalCostOfItems%1.2fp" else f"£$totalCostOfItems%1.2f"
   }
 
 }

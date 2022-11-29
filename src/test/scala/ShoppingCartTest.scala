@@ -15,4 +15,8 @@ class ShoppingCartTest extends AnyFlatSpec with Matchers {
     ShoppingCart.calculateTotalCost(Array("Orange")) shouldEqual ("0.25p")
   }
 
+  "The checkout system" should "return £1.80 as the total cost when cart is made up of 3 apples" in {
+    ShoppingCart.calculateTotalCost(Array("Apple", "Apple", "Apple")) shouldEqual ("£1.80")
+  }
+
 }
