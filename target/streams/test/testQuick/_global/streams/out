@@ -1,11 +1,13 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(ShoppingCartTest, org.scalatest.tools.Framework$$anon$1@58452fd, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(ShoppingCartTest, org.scalatest.tools.Framework$$anon$1@115679f5, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mShoppingCartTest:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mThe checkout system[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should return cart is empty message when no items in cart[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 691 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mThe checkout system[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return 60p as the total cost when cart is made up of only 1 apple[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 281 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 2[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ShoppingCartTest[0m
