@@ -6,18 +6,17 @@ object ShoppingCart extends App {
     if (shoppingCart.isEmpty) {
       "Cart is empty."
     } else {
-
-      val itemsPrices = Map("Apple" -> 0.60, "Orange" -> 0.25)
       var totalCostOfItems = 0.0
       var containsUnknownItem = false
+      val validItems = Array("Apple","Orange")
       val unknownItemMessage = " (excluding unknown item(s)). Please check unknown item in cart."
       val countOfSpecificItems = countOfEachItemInCart(shoppingCart)
-      val totalCostOfEachItemWithOffersApplied = applyOffersToItems(countOfSpecificItems, itemsPrices)
+      val totalCostOfEachItemWithOffersApplied = applyOffersToItems(countOfSpecificItems)
 
       totalCostOfItems = totalCostOfEachItemWithOffersApplied.values.sum
 
       for (item <- shoppingCart) {
-        if (!itemsPrices.contains(item)) containsUnknownItem = true
+        if (!validItems.contains(item)) containsUnknownItem = true
       }
 
       if (containsUnknownItem)
@@ -41,25 +40,28 @@ object ShoppingCart extends App {
     itemCount.toMap
   }
 
-  def applyOffersToItems(countOfSpecificItems: Map[String, Int], itemsPrices: Map[String, Double]): Map[String, Double] = {
+  def applyOffersToItems(countOfSpecificItems: Map[String, Int]): Map[String, Double] = {
+
+    val itemsPrices = Map("Apple" -> 0.60, "Orange" -> 0.25)
+
     countOfSpecificItems.map(item => {
+
       val itemName = item._1
       val itemCount = item._2
+
       itemName match {
-        case "Apple" => {
+        case "Apple" =>
           if (itemCount % 2 == 0)
             (itemName, (itemCount / 2) * itemsPrices(itemName))
           else
             (itemName, (itemCount / 2) * itemsPrices(itemName) + itemsPrices(itemName))
-        }
-        case "Orange" => {
+        case "Orange" =>
           if(itemCount < 3)
             (itemName, itemCount  * itemsPrices(itemName))
           else if (itemCount % 3 == 0)
             (itemName, itemCount * itemsPrices(itemName) - (itemsPrices(itemName) * (itemCount / 3)))
           else
             (itemName, itemCount * itemsPrices(itemName) - itemsPrices(itemName))
-        }
         case _ => (itemName, 0.0)
       }
 
