@@ -43,24 +43,24 @@ object ShoppingCart extends App {
 
   def applyOffersToItems(countOfSpecificItems: Map[String, Int], itemsPrices: Map[String, Double]): Map[String, Double] = {
     countOfSpecificItems.map(item => {
-      item._1 match {
+      val itemName = item._1
+      val itemCount = item._2
+      itemName match {
         case "Apple" => {
-          if (item._2 % 2 == 0) {
-            (item._1, (item._2 / 2) * itemsPrices(item._1))
-          } else {
-            (item._1, (item._2 / 2) * itemsPrices(item._1) + itemsPrices(item._1))
-          }
+          if (itemCount % 2 == 0)
+            (itemName, (itemCount / 2) * itemsPrices(itemName))
+          else
+            (itemName, (itemCount / 2) * itemsPrices(itemName) + itemsPrices(itemName))
         }
         case "Orange" => {
-          if(item._2 < 3) {
-            (item._1, item._2  * itemsPrices(item._1))
-          } else if (item._2 % 3 == 0) {
-            (item._1, item._2 * itemsPrices(item._1) - (itemsPrices(item._1) * (item._2 / 3)))
-          } else {
-            (item._1, item._2 * itemsPrices(item._1) - itemsPrices(item._1))
-          }
+          if(itemCount < 3)
+            (itemName, itemCount  * itemsPrices(itemName))
+          else if (itemCount % 3 == 0)
+            (itemName, itemCount * itemsPrices(itemName) - (itemsPrices(itemName) * (itemCount / 3)))
+          else
+            (itemName, itemCount * itemsPrices(itemName) - itemsPrices(itemName))
         }
-        case _ => (item._1, 0.0)
+        case _ => (itemName, 0.0)
       }
 
     })
