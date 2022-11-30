@@ -39,14 +39,14 @@ class ShoppingCartTest extends AnyFlatSpec with Matchers {
     ShoppingCart.calculateTotalCost(Array("Apple", "Orange", "Apple", "Orange", "Orange", "Apple", "Apple")) shouldEqual ("£1.70")
   }
 
-  "The checkout system" should "return total price of £1.70 and alert for unknown item in cart " +
-    "when cart is made up of 2 oranges,2 apples and 1 pineapple (invalid item)" in {
+  "The checkout system" should "return £1.10 when on offer. Apples(buy 1 get 1 free), Oranges(3 for 2) " +
+    "when cart contains 1 pineapple (invalid item)" in {
     ShoppingCart.calculateTotalCost(Array("Apple", "Orange", "Apple", "Orange", "Pineapple")) shouldEqual (
-      "£1.70 (excluding unknown item(s)). Please check unknown item in cart.")
+      "£1.10 (excluding unknown item(s)). Please check unknown item in cart.")
   }
 
-  "The checkout system" should "return total price of 0.85p and alert for unknown item in cart " +
-    "when cart is made up of 1 orange, 1 apple and 1 pineapple (invalid item in a different order)" in {
+  "The checkout system" should "return 0.85p when on offer. Apples(buy 1 get 1 free), Oranges(3 for 2) " +
+    "when cart contains (invalid item in a different order)" in {
     ShoppingCart.calculateTotalCost(Array("Apple", "Pineapple", "Orange")) shouldEqual (
       "0.85p (excluding unknown item(s)). Please check unknown item in cart.")
   }

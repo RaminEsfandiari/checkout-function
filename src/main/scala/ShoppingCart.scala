@@ -60,6 +60,7 @@ object ShoppingCart extends App {
             (item._1, item._2 * itemsPrices(item._1) - itemsPrices(item._1))
           }
         }
+        case _ => (item._1, 0.0)
       }
 
     })
