@@ -54,6 +54,8 @@ object ShoppingCart extends App {
         case "Orange" => {
           if (item._2 % 3 == 0) {
             (item._1, (item._2 / 3) * itemsPrices(item._1))
+          } else if(item._2 < 3){
+            (item._1, item._2  * itemsPrices(item._1))
           } else {
             (item._1, item._2 * itemsPrices(item._1) - itemsPrices(item._1))
           }
