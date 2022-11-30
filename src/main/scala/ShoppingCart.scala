@@ -43,11 +43,23 @@ object ShoppingCart extends App {
 
   def applyOffersToItems(countOfSpecificItems: Map[String, Int], itemsPrices: Map[String, Double]): Map[String, Double] = {
     countOfSpecificItems.map(item => {
-      if (item._2 % 2 == 0) {
-        (item._1, (item._2 / 2) * itemsPrices(item._1))
-      } else {
-        (item._1, (item._2 / 2) * itemsPrices(item._1) + itemsPrices(item._1))
+      item._1 match {
+        case "Apple" => {
+          if (item._2 % 2 == 0) {
+            (item._1, (item._2 / 2) * itemsPrices(item._1))
+          } else {
+            (item._1, (item._2 / 2) * itemsPrices(item._1) + itemsPrices(item._1))
+          }
+        }
+        case "Orange" => {
+          if (item._2 % 3 == 0) {
+            (item._1, (item._2 / 3) * itemsPrices(item._1))
+          } else {
+            (item._1, item._2 * itemsPrices(item._1) - itemsPrices(item._1))
+          }
+        }
       }
+
     })
   }
 

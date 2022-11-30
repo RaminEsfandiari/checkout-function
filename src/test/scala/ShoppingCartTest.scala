@@ -15,12 +15,12 @@ class ShoppingCartTest extends AnyFlatSpec with Matchers {
     ShoppingCart.calculateTotalCost(Array("Orange")) shouldEqual ("0.25p")
   }
 
-  "The checkout system" should "return £1.20 when apples are on 2 for 1 offer and 3 apples are in cart " in {
+  "The checkout system" should "return £1.20 when apples are on 2 for 1 offer and 3 apples are in cart" in {
     ShoppingCart.calculateTotalCost(Array("Apple", "Apple", "Apple")) shouldEqual ("£1.20")
   }
 
-  "The checkout system" should "return £1.00 as the total cost when cart is made up of 4 oranges" in {
-    ShoppingCart.calculateTotalCost(Array("Orange", "Orange", "Orange", "Orange")) shouldEqual ("£1.00")
+  "The checkout system" should "return 0.75p when oranges are on buy 2 get one free offer and 4 oranges are in cart" in {
+    ShoppingCart.calculateTotalCost(Array("Orange", "Orange", "Orange", "Orange")) shouldEqual ("0.75p")
   }
 
   "The checkout system" should "return £3.15 as the total cost when cart is made up of 3 oranges and 4 apples" in {
