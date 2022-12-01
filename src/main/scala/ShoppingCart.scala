@@ -3,28 +3,26 @@ import scala.collection.mutable
 object ShoppingCart extends App {
 
   def calculateTotalCost(shoppingCart: Array[String]): String = {
-    if (shoppingCart.isEmpty) {
+    parseMessage(shoppingCart, applyOffersToItems(countOfEachItemInCart(shoppingCart)).values.sum)
+  }
+
+  def parseMessage(shoppingCart: Array[String], totalCostOfItems: Double): String ={
+    if(containUnknownItem(shoppingCart))
+      formatPrice(totalCostOfItems) + " (excluding unknown item(s)). Please check unknown item in cart."
+    else if (shoppingCart.isEmpty)
       "Cart is empty."
-    } else {
-      var totalCostOfItems = 0.0
-      var containsUnknownItem = false
-      val validItems = Array("Apple","Orange")
-      val unknownItemMessage = " (excluding unknown item(s)). Please check unknown item in cart."
-      val countOfSpecificItems = countOfEachItemInCart(shoppingCart)
-      val totalCostOfEachItemWithOffersApplied = applyOffersToItems(countOfSpecificItems)
+    else
+      formatPrice(totalCostOfItems)
+  }
 
-      totalCostOfItems = totalCostOfEachItemWithOffersApplied.values.sum
-
-      for (item <- shoppingCart) {
-        if (!validItems.contains(item)) containsUnknownItem = true
-      }
-
-      if (containsUnknownItem)
-        formatPrice(totalCostOfItems) + unknownItemMessage
-      else
-        formatPrice(totalCostOfItems)
-
+  def containUnknownItem(shoppingCart: Array[String]) = {
+    var containsUnknownItem = false
+    val validItems = Array("Apple","Orange")
+    for (item <- shoppingCart) {
+      if (!validItems.contains(item))
+        containsUnknownItem = true
     }
+    containsUnknownItem
   }
 
   def formatPrice(totalCostOfItems: Double): String = {
